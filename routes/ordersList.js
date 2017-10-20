@@ -31,18 +31,41 @@ router.get('/api/ordersList', (req, res) => {
         }
         //parse the json for order from mongoDB
         res.json(customerOrder);
+        return;
     });
+   
 });
 
-//search query using phone number
+
 router.get('/api/ordersList/:phoneSearchInput', (req, res) => {
     console.log("searching via phone number");
-    console.log(req.query.phoneNumber);
-    Order.find({"phoneNumber": req.query.phoneNumber}, (err, customerOrder) => {
+     //search query using phone number
+     console.log(req.query);
+     Order.find({"phoneNumber": req.query.phoneNumber}, (err, customerOrder) => {
         if(err){//show error if error was found
             console.log(err);
             console.log(res.json(customerOrder));
+            return;
         }
+
+        //parse the json for order from mongoDB
+        res.json(customerOrder);
+        return;
+    });
+   
+});
+
+
+router.get('/api/ordersList/:address', (req, res) => {
+    console.log("searching via ", req.query);
+
+    Order.find({"streetAddress": req.query.streetAdress}, (err, customerOrder) => {
+        if(err){//show error if error was found
+            console.log(err);
+            console.log(res.json(customerOrder));
+            return;
+        }
+
         //parse the json for order from mongoDB
         res.json(customerOrder);
     });

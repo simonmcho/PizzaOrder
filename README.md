@@ -11,7 +11,6 @@ This repo is to represent a part of simonmcho's portfolio. It is an introduction
 ## Project Status: Work In Progress (WIP)  
 To do:
 - Add pizza items' costs
-- Add functionality to search for an order via phone number or address
 - Stylize
 - Add cool front-end JS functionalities for taste
 - Make it good

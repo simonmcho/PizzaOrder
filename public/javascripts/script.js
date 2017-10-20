@@ -10,6 +10,7 @@ $(function ready() {
 
     //client side on submit
     $("#submitForm").submit(function (e) {
+        console.log('submitted');
         e.preventDefault();
 
         var customerInfo = JSON.stringify({
