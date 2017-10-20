@@ -1,4 +1,4 @@
-# Pizza Order Form using NodeJs, Express Middleware, and MongoDB. The project was created using express generator. EJS is the the JavaScript Template that is being used.  
+# Pizza Order Form using NodeJs, Express Middleware, and MongoDB.  
   
 This repo is to represent a part of simonmcho's portfolio. It is an introduction to NodeJS.  
 
