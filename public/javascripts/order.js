@@ -20,6 +20,7 @@ $(function ready() {
     
                     for(let i = 0; i < toppingsArray.length; i++){
                         let topping;
+                        //do this to separate words into two
                         // if(toppingsArray[i].includes("Peppers")){
                         //     console.log(findUpperCase(toppingsArray[i]));
                         // }
@@ -27,6 +28,19 @@ $(function ready() {
                     }
                 }
         });
+    });
+
+    $('#phoneSearch').submit((e) => {
+        e.preventDefault();
+        
+        var customerByPhone = {
+            phoneNumber: $('#phoneSearchInput').val()
+        };
+
+        $.get(
+            '/api/ordersList/:phoneSearchInput',
+            customerByPhone
+        );
     });
 
     // function findUpperCase(word){

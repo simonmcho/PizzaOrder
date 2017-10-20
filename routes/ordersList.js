@@ -35,8 +35,17 @@ router.get('/api/ordersList', (req, res) => {
 });
 
 //search query using phone number
-router.get('/api/ordersList/:phoneNumber', (req, res) => {
-
+router.get('/api/ordersList/:phoneSearchInput', (req, res) => {
+    console.log("searching via phone number");
+    console.log(req.query.phoneNumber);
+    Order.find({"phoneNumber": req.query.phoneNumber}, (err, customerOrder) => {
+        if(err){//show error if error was found
+            console.log(err);
+            console.log(res.json(customerOrder));
+        }
+        //parse the json for order from mongoDB
+        res.json(customerOrder);
+    });
 });
 
 //search query using address
@@ -44,12 +53,10 @@ router.get('/api/ordersList/:streetAddress', (req, res) => {
 
 });
 
-router.post('/api/ordersList', (req, res) => {
-    console.log(req.body);
-    //console.log(req.body.pizzaQuantity);
+router.post('/api/ordersList', (req, res) => { 
     var customerOrder = new Order(req.body);
 
-   // console.log("Received an order request", customerOrder);
+    console.log("Received an order request", customerOrder);
 
     //validation
     if(!customerOrder.customerName || !customerOrder.phoneNumber || !customerOrder.streetAddress || !customerOrder.city || !customerOrder.postalCode){
