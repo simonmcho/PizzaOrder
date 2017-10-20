@@ -1,4 +1,14 @@
 $(function ready() {
+    //Create dropdown for quantity
+    if($("select").hasClass("quantity")) {
+        var $quantityDropdown = $(".quantity");
+
+        for(let i = 1; i <= 12; i++){
+                $quantityDropdown.append($('<option></option>').val(i).html(i));
+            }
+        }
+
+    //client side on submit
     $("#submitForm").submit(function (e) {
         e.preventDefault();
 
@@ -7,7 +17,13 @@ $(function ready() {
             phoneNumber: $('#phoneNumber').val(),
             streetAddress: $('#streetAddress').val(),
             city: $('#city').val(),
-            postalCode: $('#postalCode').val()
+            postalCode: $('#postalCode').val(),
+            quantity: $('#quantity').val(),
+            size: $('.size:checked').val(),
+            crust: $('.crust:checked').val(),
+            toppings: $('.toppings:checked').map(function() {
+                return this.value;
+            }).get()
         });
 
         $.ajax({

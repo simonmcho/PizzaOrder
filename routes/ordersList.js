@@ -1,10 +1,16 @@
 let express = require('express');
 let Order   = require('../model/Order');
+let Pizza   = require('../local_configs/config.json');
 
 let router = express.Router();
 
 router.get('/', (req, res) => {
-    var vm = {title: "Pizza Order Title in routes/order.js, for index.ejs"};
+    var vm = {
+        title: "Simmonson's Pizza Order",
+        sizes: Pizza.pizzaSize,
+        crusts: Pizza.pizzaCrust,
+        toppings: Pizza.toppings
+    };
     res.render('index', vm);
     console.log('clicked to render index');
 });
@@ -39,10 +45,11 @@ router.get('/api/ordersList/:streetAddress', (req, res) => {
 });
 
 router.post('/api/ordersList', (req, res) => {
-    console.log('posted');
+    console.log(req.body);
+    //console.log(req.body.pizzaQuantity);
     var customerOrder = new Order(req.body);
 
-    console.log("Received an order request", customerOrder);
+   // console.log("Received an order request", customerOrder);
 
     //validation
     if(!customerOrder.customerName || !customerOrder.phoneNumber || !customerOrder.streetAddress || !customerOrder.city || !customerOrder.postalCode){

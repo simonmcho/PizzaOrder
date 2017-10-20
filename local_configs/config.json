@@ -1,0 +1,26 @@
+{
+    "pizzaSize": {
+        "personal": "8.00",
+        "small": "10.00",
+        "medium": "12.00",
+        "large": "14.00"
+    },
+    "pizzaCrust": {
+        "original": "0.00",
+        "thinCrust": "0.00",
+        "multigrain": "1.00",
+        "multigrainThinCrust": "0.50"
+    },
+    "toppings": {
+        "anchovies": "1.00",
+        "bacon": "0.50",
+        "bananaPeppers": "0.25",
+        "cheese": "0.25",
+        "chicken": "1.00",
+        "corn": "0.10",
+        "ham": "0.50",
+        "pepperoni": "0.50",
+        "pineapple": "0.50",
+        "olives": "0.75"
+    }
+}

@@ -31,16 +31,47 @@
                     </div>
                     <div class="form-group">
                         <label for="postalCode">Postal Code</label>
-                        <input type="text" class="form-control" id="postalCode" name="cipostalCodety" placeholder="A0A 0A0">
+                        <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="A0A 0A0">
+                    </div>
+
+                    <!--Quantity-->
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <select class="quantity" name="pizzaQuantity" id="quantity"></select>
+                    </div>
+                    <!--Size-->
+                    <div class="form-group">
+                        <label for="size">Size</label>
+                        <div>
+                           <% for(let size in sizes) {%>
+                            <input class="size" type="radio" name="pizzaSize" value=<%= size%> /><%= size %> $<%=sizes[size]%>
+                           <%}%>
+                        </div>
+                    </div>
+                    <!--Crust-->
+                    <div class-"form-group">
+                        <label for="crust">Crust Type</label>
+                        <div>
+                            <% for(let crust in crusts) {%>
+                            <input class="crust" type="radio" name="pizzaCrust" value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
+                            <%}%>
+                        </div>
+                    </div>
+                    <div class-"form-group">
+                        <label for="toppings">Toppings</label>
+                        <div>
+                            <% for(let topping in toppings) {%>
+                            <input class="toppings" type="checkbox" name="pizzaToppings" value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
+                            <%}%>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-success">Place an order!</button>
                     <div id="order-request-status">
                     </div>
                 </form>
-            </div>
-
-        </div>
+            </div><!--/col-->
+        </div><!--/row-->
         
         <% include partials/footer.ejs %>
         <script src="javascripts/script.js" ></script>

@@ -7,13 +7,13 @@ var courseSchema = new Schema({
     phoneNumber: String,
     streetAddress: String,
     city: String,
-    postalCode: String
-    // quantity: number,
-    // size: number,
+    postalCode: String,
+    quantity: String,
+    size: String,
     // sizeCost: number,
-    // crust: String,
-    // crustCost: number,
-    // toppings: String,
+    crust: String,
+    //crustCost: number,
+    toppings: String
     // toppingsCost: number,
     // totalCost: number
 }); 

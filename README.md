@@ -1,26 +1,33 @@
-# Pizza Order Form using NodeJs, Express Middleware, and MongoDB. 
+# Pizza Order Form using NodeJs, Express Middleware, and MongoDB. The project was created using express generator. EJS is the the JavaScript Template that is being used.  
   
 This repo is to represent a part of simonmcho's portfolio. It is an introduction to NodeJS.  
+
+### This api is an example of an online form to place a pizza order. Its features will include:  
+- Ability to place an order with various customer parameters
+- Ability to see a list of all orders placed
+- Ability to search for an order using a customer's phone number or address in the search query.
   
-## Project Status: Work In Progress (WIP)
-To do:  
-- Add pizza items
+  
+## Project Status: Work In Progress (WIP)  
+To do:
+- Add pizza items' costs
 - Add functionality to search for an order via phone number or address
 - Stylize
 - Add cool front-end JS functionalities for taste
-- Make it good  
+- Make it good
 
-The project was created using express generator. EJS is the the JavaScript Template that is being used.  
+The project was created using express generator. EJS is the the JavaScript Template that is being used.
   
-## Pre-requsiites  
+## Getting started  
+
+## Pre-requisites
 - Knowledge of JavaScript
 - Knowledge of jQuery
 - Knowledge of ES6
 - Robo 3T installed (https://robomongo.org/download)
 - MongoDB installed (https://www.mongodb.com/download-center#community)
-  
-### Getting started  
-- Run npm install to install dependencies (Due to using express generator to create this project).  
+
+### Run npm install to install dependencies (Due to using express generator to create this project).  
 - After installing dependencies, you will need to set up your database using MongoDB:
   
 1. Navigate to a directory location where you want to store your database.
@@ -44,8 +51,4 @@ The project was created using express generator. EJS is the the JavaScript Templ
 3. Place a pizza order. Once successfully placed, you should see the data in the orders list page as well as in the Robo3T's <name_of_your_database> -> Collections
     
     
-### This api is an example of an online form to place a pizza order. Its features include:  
-- Ability to place an order with various customer parameters
-- Ability to see a list of all orders placed
-- Ability to search for an order using a customer's phone number or address in the search query.
 
