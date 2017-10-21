@@ -12,6 +12,7 @@ $(function ready() {
         data.forEach(function(item){
             let toppingsArray = [];
 
+            console.log(item);
             showQueryResults('#orders', item);
 
                 if(item.toppings){
@@ -66,30 +67,15 @@ function showQueryResults(query, item){
                     '</td><td>' + item.postalCode +
                     '</td><td>' + item.quantity + 
                     '</td><td>' + item.size + 
+                    '</td><td>' + '$' + parseInt(item.sizeCost).toFixed(2) + 
                     '</td><td>' + item.crust +
-                    '</td><td>' + item.toppings + '</td></tr>'
+                    '</td><td>' + '$' + parseInt(item.crustCost).toFixed(2) + 
+                    '</td><td>' + item.toppings + 
+                    '</td><td>' + '$' + parseInt(item.toppingsCost).toFixed(2) + 
+                    '</td><td>' + '$' + parseInt(item.totalCost).toFixed(2) + 
+                    '</td></tr>'
     );
 }
-
-//Search Option Dropdown
-// function searchDropdownSelect() {
-//     switch(this.value){
-//          case "Phone Number":
-//              $(".search").removeAttr('id');
-//              $(".search").attr('id', "phoneSearch");
-//              $(".form-control").removeAttr('id');
-//              $(".form-control").attr('id', "phoneNumberInput");
-//              break;
-//          case "Street Address":
-//              $(".search").removeAttr('id');
-//              $(".search").attr('id', "addressSearch");
-//              $(".form-control").removeAttr('id');
-//              $(".form-control").attr('id', "streetAddressInput");
-//              break;
-//          default:
-//              console.log("something weird with dropdown");
-//     }
-// }
 
 
     // function findUpperCase(word){

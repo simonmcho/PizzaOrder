@@ -1,4 +1,7 @@
 $(function ready() {
+
+    //var calculator = require('../local_modules/PriceCalculator.js');
+
     //Create dropdown for quantity
     if($("select").hasClass("quantity")) {
         var $quantityDropdown = $(".quantity");
@@ -21,10 +24,14 @@ $(function ready() {
             postalCode: $('#postalCode').val(),
             quantity: $('#quantity').val(),
             size: $('.size:checked').val(),
+           // sizeCost: pizzaPrice.showPizzaSizeCost(),
             crust: $('.crust:checked').val(),
+           // crustCost: pizzaPrice.showPizzaCrustCost(),
             toppings: $('.toppings:checked').map(function() {
                 return this.value;
             }).get()
+          //  toppingsCost: pizzaPrice.calculateToppingsCost(),
+           // totalCost: pizzaPrice.totalCost()
         });
 
         $.ajax({

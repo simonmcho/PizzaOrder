@@ -1,6 +1,7 @@
-let express = require('express');
-let Order   = require('../model/Order');
-let Pizza   = require('../local_configs/config.json');
+let express     = require('express');
+let Order      = require('../model/Order');
+let Pizza      = require('../local_configs/config.json');
+let Calculator = require('../local_modules/PriceCalculator.js');
 
 let router = express.Router();
 
@@ -77,6 +78,7 @@ router.get('/api/ordersList/:streetAddress', (req, res) => {
 });
 
 router.post('/api/ordersList', (req, res) => { 
+
     var customerOrder = new Order(req.body);
 
     console.log("Received an order request", customerOrder);
@@ -88,6 +90,18 @@ router.post('/api/ordersList', (req, res) => {
         json({error: "Missing necessary information from customer to place a pizza order."});
         return;
     }
+
+    var pizzaPrice = new Calculator.PriceCalculator(customerOrder.quantity, customerOrder.size, customerOrder.crust, customerOrder.toppings);
+    
+    console.log(pizzaPrice.showPizzaCrustCost());
+    console.log(pizzaPrice.calculateToppingsCost());
+
+    customerOrder['sizeCost'] = pizzaPrice.showPizzaSizeCost();
+    customerOrder['toppingsCost'] = pizzaPrice.calculateToppingsCost();
+    customerOrder['totalCost'] = pizzaPrice.calculateTotalCost();
+    customerOrder['crustCost'] = pizzaPrice.showPizzaCrustCost();
+
+    console.log(customerOrder);
 
     customerOrder.save((err) => {
         if(err) {

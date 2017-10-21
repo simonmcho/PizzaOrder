@@ -1,4 +1,10 @@
 //model for Order
+const calculator = require('../local_modules/PriceCalculator.js');
+
+var pizzaPrice = new calculator.PriceCalculator();
+
+
+
 var mongoose = require('mongoose'),
       Schema   = mongoose.Schema;
 
@@ -10,12 +16,14 @@ var courseSchema = new Schema({
     postalCode: String,
     quantity: String,
     size: String,
-    // sizeCost: number,
     crust: String,
-    //crustCost: number,
-    toppings: String
-    // toppingsCost: number,
-    // totalCost: number
+    toppings: String,
+    sizeCost: String,//receive size Cost when being saved in the post method
+    curstCost: String,
+    toppingsCost: String,
+    totalCost: String
 }); 
+
+//pizzaPrice(courseSchema.quantity, courseSchema.size, courseSchema.crust, courseSchema.toppings);
 
 module.exports = mongoose.model('Order', courseSchema);

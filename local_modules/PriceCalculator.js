@@ -1,4 +1,4 @@
-const pizzaConfig = require('./config.json');
+const pizzaConfig = require('../local_configs/config.json');
 
 //class to perform all pizza calculations
 class PriceCalculator {
@@ -23,11 +23,11 @@ class PriceCalculator {
 
         //assign the cost of pizza crust using config.json
         if(crust !== undefined){
-            if(crust === "Original" || crust === "thin") {
+            if(crust === "original" || crust === "thinCrust") {
                 this.crustCost = 0;
             } else if(crust === "multigrain") {
                 this.crustCost = parseFloat(pizzaConfig.pizzaCrust.multigrain);
-            } else if(crust === "multigrainThin"){
+            } else if(crust === "multigrainThinCrust"){
                 this.crustCost = parseFloat(pizzaConfig.pizzaCrust.multigrainThinCrust);
             } else {
                 this.crustCost = 0;
