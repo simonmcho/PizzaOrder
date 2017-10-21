@@ -19,7 +19,7 @@ var courseSchema = new Schema({
     crust: String,
     toppings: String,
     sizeCost: String,//receive size Cost when being saved in the post method
-    curstCost: String,
+    crustCost: String,
     toppingsCost: String,
     totalCost: String
 }); 
