@@ -101,8 +101,6 @@ router.post('/api/ordersList', (req, res) => {
     customerOrder['totalCost'] = pizzaPrice.calculateTotalCost();
     customerOrder['crustCost'] = pizzaPrice.showPizzaCrustCost();
 
-    console.log(customerOrder);
-
     customerOrder.save((err) => {
         if(err) {
             console.log("Your error from your post request: ", err);

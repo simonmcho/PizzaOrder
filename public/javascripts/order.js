@@ -11,7 +11,8 @@ $(function ready() {
     $.getJSON("/api/ordersList", (data) => {
         data.forEach(function(item){
             let toppingsArray = [];
-
+            console.log(item.toppingsCost);
+            console.log(item.totalCost);
             console.log(item);
             showQueryResults('#orders', item);
 
@@ -67,12 +68,12 @@ function showQueryResults(query, item){
                     '</td><td>' + item.postalCode +
                     '</td><td>' + item.quantity + 
                     '</td><td>' + item.size + 
-                    '</td><td>' + '$' + parseInt(item.sizeCost).toFixed(2) + 
+                    '</td><td>' + '$' + parseFloat(item.sizeCost).toFixed(2) + 
                     '</td><td>' + item.crust +
-                    '</td><td>' + '$' + parseInt(item.crustCost).toFixed(2) + 
+                    '</td><td>' + '$' + parseFloat(item.crustCost).toFixed(2) + 
                     '</td><td>' + item.toppings + 
-                    '</td><td>' + '$' + parseInt(item.toppingsCost).toFixed(2) + 
-                    '</td><td>' + '$' + parseInt(item.totalCost).toFixed(2) + 
+                    '</td><td>' + '$' + parseFloat(item.toppingsCost).toFixed(2) + 
+                    '</td><td>' + '$' + parseFloat(item.totalCost).toFixed(2)  + 
                     '</td></tr>'
     );
 }

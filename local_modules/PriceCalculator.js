@@ -4,7 +4,7 @@ const pizzaConfig = require('../local_configs/config.json');
 class PriceCalculator {
     //constructor to calculate costs of size, crust, and toppings
     constructor(quantity, size, crust, toppings){
-        this.numberOfPizzas = quantity;
+        this.numberOfPizzas = parseInt(quantity);
 
         //assign the cost of pizza size using config.json
         if(size !== undefined){
@@ -17,7 +17,7 @@ class PriceCalculator {
             } else if (size === "large"){
                 this.sizeCost = parseFloat(pizzaConfig.pizzaSize.large);
             } else {
-                this.sizeCost = "$0.00";
+                this.sizeCost = 0;
             }
         }
 
@@ -47,15 +47,17 @@ class PriceCalculator {
                 
                 return toppingsTotalCost;
             }, 0.0); 
-        } else if (typeof toppings === "string"){//if there is only one topping
+        } else {
             for(let toppingAvailable in pizzaConfig.toppings){
+                //if one topping
                 if(toppings === `${toppingAvailable}`){
-                    this.toppingsCost = parseFloat(`${pizzaConfig.toppings[toppingAvailable]}`);
+                    this.toppingsCost =  parseFloat(`${pizzaConfig.toppings[toppingAvailable]}`);
+                    return;
+                } else { //if no toppings
+                    this.toppingsCost = 0;
                 }
             }
-        } else {//if no topping or error
-            this.toppingsCost = 0.0;
-        }     
+        }
     }//end of constructor
 
     showPizzaSizeCost() {//return cost of pizza size
