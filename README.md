@@ -33,6 +33,8 @@ The project was created using express generator. EJS is the the JavaScript Templ
 3. Navigate to your local computer's directory where MongoDB\Server\3.4\bin resides
 4. Run the command line from this directory.
 5. Type this in the command line: `mongod.exe --dbpath <your_database_location_here>`
+- For Windows OS, your root path would be at your drive, for example: C:/Projects/myDatabase  
+- For MAC OS, your root path would be from /Users, for example: /Users/simmonson/projects/myDatabase
 6. If successful, you should see this in the log: `[thread1] waiting for connections on port 27017`
   
 - Now we can use Robo 3T as a graphical user interface to easily see database information  
