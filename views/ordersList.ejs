@@ -2,11 +2,11 @@
 <html>
     <% include partials/head.ejs %>
     <body>
-        <% include partials/header.ejs %>
         <div class="container">
+            <% include partials/header.ejs %>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="/">Order</a></li>
-                <li><a href="/ordersList">Orders List</a></li>
+                <li id="nav-order"><a href="/">Order</a></li>
+                <li class="active" id="nav-orders-list"><a href="/ordersList">Orders List</a></li>
             </ul>
 
             <br/>

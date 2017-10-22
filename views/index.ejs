@@ -2,76 +2,81 @@
 <html>
     <% include partials/head.ejs %>
     <body>
+        <div class="container">
         <% include partials/header.ejs %>
 
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="/">Order</a></li>
-            <li><a href="/ordersList">Orders List</a></li>
-        </ul>
-        <br/>
+            <ul class="nav nav-tabs" id="nav-pizza">
+                <li class="active" id="nav-order"><a href="/">Order</a></li>
+                <li id="nav-orders-list"><a href="/ordersList">Orders List</a></li>
+            </ul>
+            <br/>
 
-        <div class="row">
-            <div class="col-md-6">
-                <form method="post" id="submitForm">
-                    <div class="form-group">
-                        <label for="customerName">Name</label>
-                        <input type="text" required class="form-control" name="customerName" id="customerName" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone number here">
-                    </div>
-                    <div class="form-group">
-                        <label for="streetAddress">Street Address</label>
-                        <input type="text" class="form-control" id="streetAddress" name="streetAddress" placeholder="Address here">
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="city" placeholder="City here">
-                    </div>
-                    <div class="form-group">
-                        <label for="postalCode">Postal Code</label>
-                        <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="A0A 0A0">
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post" id="submitForm">
+                        <div class="form-group">
+                            <label for="customerName">Name</label>
+                            <input type="text" required class="form-control" name="customerName" id="customerName" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone number here">
+                        </div>
+                        <div class="form-group">
+                            <label for="streetAddress">Street Address</label>
+                            <input type="text" class="form-control" id="streetAddress" name="streetAddress" placeholder="Address here">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City here">
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code</label>
+                            <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="A0A 0A0">
+                        </div>
 
-                    <!--Quantity-->
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <select class="quantity" name="pizzaQuantity" id="quantity"></select>
-                    </div>
-                    <!--Size-->
-                    <div class="form-group">
-                        <label for="size">Size</label>
-                        <div>
-                           <% for(let size in sizes) {%>
-                            <input class="size" type="radio" name="pizzaSize" value=<%= size%> /><%= size %> $<%=sizes[size]%>
-                           <%}%>
+                        <!--Quantity-->
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <select class="quantity dropdown" name="pizzaQuantity" id="quantity">
+                                <div class="dropdown-menu">
+                                </div>
+                            </select>
                         </div>
-                    </div>
-                    <!--Crust-->
-                    <div class-"form-group">
-                        <label for="crust">Crust Type</label>
-                        <div>
-                            <% for(let crust in crusts) {%>
-                            <input class="crust" type="radio" name="pizzaCrust" value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
-                            <%}%>
+                        <!--Size-->
+                        <div class="form-group">
+                            <label for="size">Size</label>
+                            <div>
+                                <% for(let size in sizes) {%>
+                                <input class="size" type="radio" name="pizzaSize" value=<%= size%> /><%= size %> $<%=sizes[size]%>
+                                <%}%>
+                            </div>
                         </div>
-                    </div>
-                    <div class-"form-group">
-                        <label for="toppings">Toppings</label>
-                        <div>
-                            <% for(let topping in toppings) {%>
-                            <input class="toppings" type="checkbox" name="pizzaToppings" value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
-                            <%}%>
+                        <!--Crust-->
+                        <div class-"form-group">
+                            <label for="crust">Crust Type</label>
+                            <div>
+                                <% for(let crust in crusts) {%>
+                                <input class="crust" type="radio" name="pizzaCrust" value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
+                                <%}%>
+                            </div>
                         </div>
-                    </div>
+                        <div class-"form-group">
+                            <label for="toppings">Toppings</label>
+                            <div>
+                                <% for(let topping in toppings) {%>
+                                <input class="toppings" type="checkbox" name="pizzaToppings" value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
+                                <%}%>
+                            </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-success">Place an order!</button>
-                    <div id="order-request-status">
-                    </div>
-                </form>
-            </div><!--/col-->
-        </div><!--/row-->
+                        <button type="submit" class="btn btn-success">Place an order!</button>
+                        <div id="order-request-status">
+                        </div>
+                    </form>
+                </div><!--/col-->
+            </div><!--/row-->
+        </div>
         
         <% include partials/footer.ejs %>
         <script src="javascripts/script.js" ></script>

@@ -2,62 +2,62 @@ $(function ready() {
     const SEARCH_OPTIONS = ["Phone Number", "Street Address"];
 
     if($("select").hasClass("searchOptions")){    
-
-        for(let i = 0; i < SEARCH_OPTIONS.length; i++){
-            $(".searchOptions").append($('<option></option>').val(SEARCH_OPTIONS[i]).html(SEARCH_OPTIONS[i]));
-        }
+        
+                for(let i = 0; i < SEARCH_OPTIONS.length; i++){
+                    $(".searchOptions").append($('<option></option>').val(SEARCH_OPTIONS[i]).html(SEARCH_OPTIONS[i]));
+                }
     }
-   
+    
+   //Show All Orders
     $.getJSON("/api/ordersList", (data) => {
         data.forEach(function(item){
             let toppingsArray = [];
-            console.log(item.toppingsCost);
-            console.log(item.totalCost);
-            console.log(item);
+            
             showQueryResults('#orders', item);
 
                 if(item.toppings){
-                    toppingsArray = item.toppings.split(",");
-    
-                    // for(let i = 0; i < toppingsArray.length; i++){
-                    //     let topping;
-                    //     //do this to separate words into two
-                    //     // if(toppingsArray[i].includes("Peppers")){
-                    //     //     console.log(findUpperCase(toppingsArray[i]));
-                    //     // }
-                    //     $("#orders").append('</td><td>' + toppingsArray[i]);
-                    // }
                 }
-        });
+            });
     });
-
 
     //Search Functionality
     $(".search").submit((e) => {
         e.preventDefault();
 
         var $searchQuery = $("#searchInput").val();
-        console.log($searchQuery);
+        //search by phone number
+        if( $('.searchOptions option:selected').text() == SEARCH_OPTIONS[0] ){
+            
+            $.getJSON("/api/ordersList", (data) => {
+                $("#orders tr:gt(0)").remove();//remove all elements except table headers
 
-        $.getJSON("/api/ordersList", (data) => {
-            $("#orders tr:gt(0)").remove();//remove all elements except table headers
-
-            data.forEach((item) => {
-                //search via phone number
-                if( (item.phoneNumber).indexOf($searchQuery) > -1){
-                    showQueryResults("#orders", item);
-                } else if( (item.streetAddress).toLowerCase().indexOf(
-                               ($searchQuery).toLowerCase()
-                            ) > -1 ){//search via street address
-                    showQueryResults("#orders", item);
-                } else if ($searchQuery == ''){//show all if search value is blank
-                    console.log(item);
-                    showQueryResults("#orders", item);
-                }
+                data.forEach((item) => {
+                    if( (item.phoneNumber).indexOf($searchQuery) > -1){
+                        showQueryResults("#orders", item);
+                    } else if ($searchQuery == ''){//show all if search value is blank
+                        showQueryResults("#orders", item);
+                    }
+                });
             });
-        });
-    });
-});
+        } else if( $('.searchOptions option:selected').text() == SEARCH_OPTIONS[1] ){//search by street address
+
+            $.getJSON("/api/ordersList", (data) => {
+                $("#orders tr:gt(0)").remove();//remove all elements except table header
+
+                data.forEach((item) => {
+                    //search via street address
+                   if( (item.streetAddress).toLowerCase().indexOf(
+                            ($searchQuery).toLowerCase() ) > -1 ){
+                        showQueryResults("#orders", item);
+                    } else if ($searchQuery == ''){//show all if search value is blank
+                        showQueryResults("#orders", item);
+                    }//end of else if
+                });//end of data.forEach
+            });//end of getJSON
+        }//end of search by street address
+
+    });//end of search functionality
+});//end of function ready IIFE
 
 //function to show query 
 function showQueryResults(query, item){
@@ -76,7 +76,7 @@ function showQueryResults(query, item){
                     '</td><td>' + '$' + parseFloat(item.totalCost).toFixed(2)  + 
                     '</td></tr>'
     );
-}
+}//end of show query function
 
 
     // function findUpperCase(word){

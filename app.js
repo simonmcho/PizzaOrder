@@ -9,7 +9,7 @@ var mongoose = require('mongoose');//setup mongoose
 
 //set up routes
 //var order = require('./routes/order');
-var ordersList = require('./routes/ordersList');
+var orders = require('./routes/orders');
 
 //setup MongoDB location for storage
 var mongoUrl = 'mongodb://localhost/simonc'//name of location as instructed
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', ordersList);//////////////////////////////////////////////////////////check line 43 on example...nothing for index 
+app.use('/', orders);//////////////////////////////////////////////////////////check line 43 on example...nothing for index 
 
 
 

@@ -38,7 +38,7 @@ router.get('/api/ordersList', (req, res) => {
 });
 
 
-router.get('/api/ordersList/:phoneSearchInput', (req, res) => {
+router.get('/api/ordersList/:phoneNumber', (req, res) => {
     console.log("searching via phone number");
      //search query using phone number
      console.log(req.query);
@@ -57,7 +57,7 @@ router.get('/api/ordersList/:phoneSearchInput', (req, res) => {
 });
 
 
-router.get('/api/ordersList/:address', (req, res) => {
+router.get('/api/ordersList/:streetAddress', (req, res) => {
     console.log("searching via ", req.query);
 
     Order.find({"streetAddress": req.query.streetAdress}, (err, customerOrder) => {
@@ -70,11 +70,6 @@ router.get('/api/ordersList/:address', (req, res) => {
         //parse the json for order from mongoDB
         res.json(customerOrder);
     });
-});
-
-//search query using address
-router.get('/api/ordersList/:streetAddress', (req, res) => {
-
 });
 
 router.post('/api/ordersList', (req, res) => { 
