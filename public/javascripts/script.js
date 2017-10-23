@@ -29,13 +29,22 @@ $(function ready() {
                 $('#order-request-status').removeClass();
                 $('#order-request-status').addClass('alert alert-success');
                 $('#order-request-status').html('Placed an order successfully!');
-            },
-            error: function (request, status) {
+            },//end of success
+            error: function (data, request, status, error) {
+                var possibleErrors = data.responseJSON;
+                console.log(possibleErrors);
+                $('#order-request-status').empty();
                 $('#order-request-status').removeClass();
                 $('#order-request-status').addClass('alert alert-danger');
-                $('#order-request-status').html('Error placing an order...');
+                
+                //show the custom errors if error on specific input
+                for(let error in possibleErrors){
+                    if(possibleErrors[error] != null) {
+                        $('#order-request-status').append("<p>",possibleErrors[error],"</p>");
+                    }
+                }
                 console.log('Request failed : ', status);
-            }
+            }//end of error
         });
     });
 });

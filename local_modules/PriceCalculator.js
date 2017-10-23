@@ -34,30 +34,47 @@ class PriceCalculator {
             }   
         }
 
-        //assign the cost of pizza toppings using config.json
-        if(typeof toppings === "object") {//if there is more than one topping
-            this.toppingsCost =  
-            
-            toppings.reduce(function(toppingsTotalCost, toppingChosen){
-                for(let toppingAvailable in pizzaConfig.toppings){
-                    if(toppingChosen === `${toppingAvailable}`){
-                        toppingsTotalCost += parseFloat(`${pizzaConfig.toppings[toppingAvailable]}`);
-                    }
-                }
-                
-                return toppingsTotalCost;
-            }, 0.0); 
-        } else {
-            for(let toppingAvailable in pizzaConfig.toppings){
-                //if one topping
-                if(toppings === `${toppingAvailable}`){
-                    this.toppingsCost =  parseFloat(`${pizzaConfig.toppings[toppingAvailable]}`);
-                    return;
-                } else { //if no toppings
-                    this.toppingsCost = 0;
-                }
+        this.toppingsCost = 0.0;
+        if(typeof toppings === 'undefined'){
+            for(let topping in pizzaConfig.toppings){
+                this.toppingsCost += parseFloat(pizzaConfig.toppings[topping]);
             }
         }
+        // this.toppingsCost =  
+        //     for(let toppingAvailable in pizzaConfig.toppings){
+        //         if(toppingChosen === `${toppingAvailable}`){
+        //             toppingsTotalCost += parseFloat(`${pizzaConfig.toppings[toppingAvailable]}`);
+        //         }
+        //     }
+            
+        //     return toppingsTotalCost;
+        // }); 
+
+        //assign the cost of pizza toppings using config.json
+        
+        // if(typeof toppings === "object") {//if there is more than one topping
+        //     this.toppingsCost =  
+            
+        //     toppings.reduce(function(toppingsTotalCost, toppingChosen){
+        //         for(let toppingAvailable in pizzaConfig.toppings){
+        //             if(toppingChosen === toppingAvailabl){
+        //                 toppingsTotalCost += parseFloat(pizzaConfig.toppings[toppingAvailable]);
+        //             }
+        //         }
+                
+        //         return toppingsTotalCost;
+        //     }); 
+        // } else {
+        //     for(let toppingAvailable in pizzaConfig.toppings){
+        //         //if one topping
+        //         if(toppings === toppingAvailable){
+        //             this.toppingsCost =  parseFloat(pizzaConfig.toppings[toppingAvailable]);
+        //             return;
+        //         } else { //if no toppings
+        //             this.toppingsCost = 0;
+        //         }
+        //     }
+        // }
     }//end of constructor
 
     showPizzaSizeCost() {//return cost of pizza size

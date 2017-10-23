@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.custom-error{
+  display: block;
+  border: 1px red solid;
+}

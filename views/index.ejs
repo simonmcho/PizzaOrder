@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <% include partials/head.ejs %>
+    <link rel="stylesheet" href="stylesheets/style.css">
     <body>
         <div class="container">
         <% include partials/header.ejs %>
@@ -17,22 +18,32 @@
                         <div class="form-group">
                             <label for="customerName">Name</label>
                             <input type="text" required class="form-control" name="customerName" id="customerName" placeholder="Enter your name">
+                            <div id="nameError">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="phoneNumber">Phone Number</label>
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone number here">
+                            <div id="phoneError">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="streetAddress">Street Address</label>
                             <input type="text" class="form-control" id="streetAddress" name="streetAddress" placeholder="Address here">
+                            <div id="addressError">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
                             <input type="text" class="form-control" id="city" name="city" placeholder="City here">
+                            <div id="cityError">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="postalCode">Postal Code</label>
                             <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="A0A 0A0">
+                            <div id="postalCodeError">
+                            </div>
                         </div>
 
                         <!--Quantity-->
@@ -46,18 +57,26 @@
                         <!--Size-->
                         <div class="form-group">
                             <label for="size">Size</label>
-                            <div>
+                            <div class="radio-option">
                                 <% for(let size in sizes) {%>
-                                <input class="size" type="radio" name="pizzaSize" value=<%= size%> /><%= size %> $<%=sizes[size]%>
+                                    <% if( size === 'personal' ) {%>
+                                        <input class="size" type="radio" name="pizzaSize" checked value=<%= size%> /><%= size %> $<%=sizes[size]%>
+                                    <% } else {%>
+                                        <input class="size" type="radio" name="pizzaSize" value=<%= size%> /><%= size %> $<%=sizes[size]%>
+                                    <%}%>
                                 <%}%>
                             </div>
                         </div>
                         <!--Crust-->
                         <div class-"form-group">
                             <label for="crust">Crust Type</label>
-                            <div>
+                            <div class="radio-option">
                                 <% for(let crust in crusts) {%>
-                                <input class="crust" type="radio" name="pizzaCrust" value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
+                                    <% if( crust === 'original') {%>
+                                        <input class="crust" type="radio" name="pizzaCrust" checked value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
+                                    <% } else {%>
+                                        <input class="crust" type="radio" name="pizzaCrust" value=<%= crust%> /><%= crust%> $<%=crusts[crust]%>
+                                    <%}%>
                                 <%}%>
                             </div>
                         </div>
@@ -65,7 +84,11 @@
                             <label for="toppings">Toppings</label>
                             <div>
                                 <% for(let topping in toppings) {%>
-                                <input class="toppings" type="checkbox" name="pizzaToppings" value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
+                                    <% if( topping === 'cheese' ){%>
+                                        <input class="toppings" type="checkbox" name="pizzaToppings" checked value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
+                                    <% } else {%>
+                                        <input class="toppings" type="checkbox" name="pizzaToppings" value=<%= topping%> /><%= topping%> $<%=toppings[topping]%>
+                                    <%}%>
                                 <%}%>
                             </div>
                         </div>
