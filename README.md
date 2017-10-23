@@ -10,6 +10,7 @@ This repo is to represent a part of simonmcho's portfolio. It is an introduction
   
 ## Project Status: Work In Progress (WIP)  
 To do:
+- Fix Calculations for toppings
 - Stylize
 - Add cool front-end JS functionalities for taste
 - Make it good
